@@ -53,13 +53,19 @@
         margin: 5px 0;
       }
       &.left {
-        background-position: -40px -500px;
-        background-image: url(https://www.themoviedb.org/assets/2/v4/account_pipes/purple-63b164a075461641b7ef444ea97d9787adf45a9552fe215e20063e3ff02491a8.svg);
         background: radial-gradient(
           at 30% top,
           rgba(31, 40, 73, 1) 0%,
           rgba(8, 28, 36, 1) 70%
         );
+        position: relative;
+        &:before {
+          content: "";
+          position: absolute;
+          left: 0;
+          background-position: -40px -500px;
+          background-image: url(https://www.themoviedb.org/assets/2/v4/account_pipes/purple-63b164a075461641b7ef444ea97d9787adf45a9552fe215e20063e3ff02491a8.svg);
+        }
       }
       &.right {
         background-color: #fcbaec;
