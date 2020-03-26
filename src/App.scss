@@ -1,0 +1,39 @@
+.movie-search {
+  .container {
+    max-width: 1050px;
+    margin: 0 auto;
+    padding: 0 20px;
+  }
+  header.main {
+    background: #081c24;
+    padding: 15px 0;
+    a.logo {
+      max-width: 80px;
+      display: block;
+      img {
+        width: 100%;
+      }
+    }
+  }
+  .form-wrapper {
+    border-bottom: 1px solid #ddd;
+    form {
+      display: flex;
+      overflow: hidden;
+      padding: 10px;
+      .icon-search {
+        opacity: 0.5;
+        :hover > & {
+          opacity: 1;
+        }
+      }
+      input {
+        font: inherit;
+        padding: 0 10px;
+        flex: 0 0 calc(100% - 100px);
+        outline: 0 none;
+        border: 0 none;
+      }
+    }
+  }
+}
