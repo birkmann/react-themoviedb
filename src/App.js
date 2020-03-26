@@ -88,6 +88,9 @@ function App() {
           </div>
         </div>
       </main>
+      <footer className='main'>
+        <div className='container'></div>
+      </footer>
     </div>
   );
 }
