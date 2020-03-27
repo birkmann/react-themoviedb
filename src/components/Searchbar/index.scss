@@ -1,0 +1,29 @@
+.form-wrapper {
+  border-bottom: 1px solid #ddd;
+  form {
+    display: flex;
+    overflow: hidden;
+    padding: 10px 0;
+    .icon-search {
+      opacity: 0.5;
+      transition: all 0.15s ease-in-out;
+      :hover > & {
+        opacity: 1;
+      }
+    }
+    input {
+      font: inherit;
+      padding: 0 10px;
+      flex: 0 0 calc(100%);
+      outline: 0 none;
+      border: 0 none;
+      @media (min-width: 400px) {
+        flex: 0 0 calc(100% - 100px);
+      }
+      &::placeholder {
+        font-style: italic;
+        color: #aaa;
+      }
+    }
+  }
+}
