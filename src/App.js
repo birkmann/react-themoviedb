@@ -1,4 +1,5 @@
 import React from "react";
+import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
 import "./App.scss";
 
 function handleSubmit(e) {
@@ -8,28 +9,54 @@ function handleSubmit(e) {
 
 function App() {
   return (
-    <div className='movie-search'>
-      <header className='main'>
-        <div className='container'>
-          <a href='/' className='logo'>
-            <img
-              src='https://www.themoviedb.org/assets/2/v4/logos/primary-green-d70eebe18a5eb5b166d5c1ef0796715b8d1a2cbc698f96d311d62f894ae87085.svg'
-              alt=''
-            />
-          </a>
+    <Router>
+      <div className='movie-search'>
+        <header className='main'>
+          <div className='container'>
+            <a href='/' className='logo'>
+              <img
+                src='https://www.themoviedb.org/assets/2/v4/logos/primary-green-d70eebe18a5eb5b166d5c1ef0796715b8d1a2cbc698f96d311d62f894ae87085.svg'
+                alt=''
+              />
+            </a>
+            <nav className='main'>
+              <Link to='/discover'>Discover</Link>
+              <a href='/'>Movies</a>
+              <a href='/'>TV Shows</a>
+              <a href='/'>People</a>
+            </nav>
+          </div>
+        </header>
+        <div className='form-wrapper'>
+          <div className='container'>
+            <form onSubmit={handleSubmit}>
+              <i className='material-icons icon-search'>search</i>
+              <input
+                type='text'
+                placeholder='Search for a movie, tv show, person...'
+              />
+            </form>
+          </div>
         </div>
-      </header>
-      <div className='form-wrapper'>
-        <div className='container'>
-          <form onSubmit={handleSubmit}>
-            <i className='material-icons icon-search'>search</i>
-            <input
-              type='text'
-              placeholder='Search for a movie, tv show, person...'
-            />
-          </form>
-        </div>
+        <Switch>
+          <Route path='/discover'>
+            <Discover />
+          </Route>
+          <Route path='/'>
+            <Home />
+          </Route>
+        </Switch>
+        <footer className='main'>
+          <div className='container'></div>
+        </footer>
       </div>
+    </Router>
+  );
+}
+
+function Home() {
+  return (
+    <div className='wrapper'>
       <div className='sub-header'>
         <div className='col left'>
           <h2>
@@ -88,9 +115,14 @@ function App() {
           </div>
         </div>
       </main>
-      <footer className='main'>
-        <div className='container'></div>
-      </footer>
+    </div>
+  );
+}
+
+function Discover() {
+  return (
+    <div className='container'>
+      <h2>Discover</h2>
     </div>
   );
 }
