@@ -7,9 +7,9 @@
     .icon-search {
       opacity: 0.5;
       transition: all 0.15s ease-in-out;
-      :hover > & {
-        opacity: 1;
-      }
+    }
+    &:hover > .icon-search {
+      opacity: 1;
     }
     input {
       font: inherit;

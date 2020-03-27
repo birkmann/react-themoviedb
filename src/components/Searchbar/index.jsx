@@ -1,15 +1,16 @@
 import React from "react";
+import { useHistory } from "react-router-dom";
 import "./index.scss";
 //import axios from "axios";
 
 //https://api.themoviedb.org/3/movie/76341?api_key=6ba659c4bce1a142960639ba1731e656
 
-function handleSubmit(e) {
-  e.preventDefault();
-  console.log("submit");
-}
-
 export const Searchbar = props => {
+  const history = useHistory();
+  const handleSubmit = event => {
+    event.preventDefault();
+    history.push("/search/?query=" + event.target.query.value);
+  };
   return (
     <div className='form-wrapper'>
       <div className='container'>
@@ -17,6 +18,7 @@ export const Searchbar = props => {
           <i className='material-icons icon-search'>search</i>
           <input
             type='text'
+            name='query'
             placeholder='Search for a movie, tv show, person...'
           />
         </form>
