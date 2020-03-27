@@ -1,4 +1,5 @@
-import React from "react";
+import React, { useEffect, setData } from "react";
+import axios from "axios";
 import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
 import "./App.scss";
 
@@ -119,11 +120,18 @@ function Home() {
   );
 }
 
+//https://api.themoviedb.org/3/movie/76341?api_key=6ba659c4bce1a142960639ba1731e656
+
 function Discover() {
+  useEffect(() => {
+    console.log("123");
+  }, []);
   return (
-    <div className='container'>
-      <h2>Discover</h2>
-    </div>
+    <main className='content discover'>
+      <div className='container'>
+        <h2>Discover New Movies &amp; TV Shows</h2>
+      </div>
+    </main>
   );
 }
 

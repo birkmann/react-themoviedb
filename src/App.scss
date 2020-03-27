@@ -155,11 +155,14 @@
         display: block;
       }
     }
+    &.discover {
+      margin-top: 40px;
+    }
   }
   footer.main {
-    background-image: url(https://www.themoviedb.org/assets/2/v4/footers_v2/SilenceOfTheLambs-ea697e7b62ca085aee551df23d238ffa5b52c6bc0502270ecbb64eb885efd7d2.jpg),
+    background-image: url(https://www.themoviedb.org/assets/2/v4/footers_v2/MadMaxFuryRoad-9f17bec5f89e26e60ad1e3af8ae17ea7a2e6921e005477046046da2fab832ce8.jpg),
       radial-gradient(at 30% top, rgba(7, 64, 52, 1) 0%, rgba(8, 28, 36, 1) 70%);
-    min-height: 400px;
+    min-height: 600px;
     margin-top: 100px;
   }
 }
