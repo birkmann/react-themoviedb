@@ -17,7 +17,7 @@ export const Search = props => {
       console.log(response.data);
       setDataMovies(response.data);
     });
-  });
+  }, []);
 
   return (
     <main className='content discover'>
@@ -27,6 +27,9 @@ export const Search = props => {
           {dataMovies.results.map(item => (
             <div className='results' key={item.id}>
               <h3>{item.title}</h3>
+              <img
+                src={"https://image.tmdb.org/t/p/w300/" + item.poster_path}
+              ></img>
             </div>
           ))}
         </div>
