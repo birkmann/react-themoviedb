@@ -17,7 +17,7 @@ export const Search = props => {
       console.log(response.data);
       setDataMovies(response.data);
     });
-  }, []);
+  }, [search]);
 
   return (
     <main className='content discover'>
@@ -29,6 +29,7 @@ export const Search = props => {
               <h3>{item.title}</h3>
               <img
                 src={"https://image.tmdb.org/t/p/w300/" + item.poster_path}
+                alt={item.title}
               ></img>
             </div>
           ))}

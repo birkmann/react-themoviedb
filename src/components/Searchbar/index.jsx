@@ -12,7 +12,6 @@ export const Searchbar = props => {
 
   const handleChange = event => {
     setSearchValue(event.target.value);
-    /*
     axios({
       method: "get",
       url:
@@ -22,7 +21,6 @@ export const Searchbar = props => {
     }).then(response => {
       console.log(response.data);
     });
-    */
   };
 
   const history = useHistory();
