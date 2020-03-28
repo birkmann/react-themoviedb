@@ -4,9 +4,9 @@ import axios from "axios";
 
 export const Search = props => {
   const [search] = useQueryParam("query", StringParam);
-  const [data, setData] = useState({ hits: [] });
+  const [dataMovies, setDataMovies] = useState({ results: [] });
+
   useEffect(() => {
-    /*
     axios({
       method: "get",
       url:
@@ -15,31 +15,21 @@ export const Search = props => {
         "&page=1&include_adult=false"
     }).then(response => {
       console.log(response.data);
-      setData(response.data);
+      setDataMovies(response.data);
     });
-    */
-
-    const fetchData = async () => {
-      const result = await axios(
-        "https://hn.algolia.com/api/v1/search?query=redux"
-      );
-      setData(result.data);
-      console.log(result.data);
-    };
-    fetchData();
-  }, []);
+  });
 
   return (
-    <main className="content discover">
-      <div className="container">
+    <main className='content discover'>
+      <div className='container'>
         <h2>Search:</h2>
-        <ul>
-          {data.hits.map(item => (
-            <li key={item.objectID}>
-              <a href={item.url}>{item.title}</a>
-            </li>
+        <div className='results'>
+          {dataMovies.results.map(item => (
+            <div className='results' key={item.id}>
+              <h3>{item.title}</h3>
+            </div>
           ))}
-        </ul>
+        </div>
       </div>
     </main>
   );
