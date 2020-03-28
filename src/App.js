@@ -7,10 +7,11 @@ import { Searchbar } from "./components/Searchbar";
 import { Discover } from "./routes/Discover/index";
 import { Home } from "./routes/Home/index";
 import { Search } from "./routes/Search/index";
+import history from "./utils/history";
 
 function App() {
   return (
-    <Router>
+    <Router history={history}>
       <div className='movie-search'>
         <Header />
         <Searchbar />

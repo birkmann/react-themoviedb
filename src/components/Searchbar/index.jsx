@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import { useHistory } from "react-router-dom";
+
 import { useQueryParam, StringParam } from "use-query-params";
 import axios from "axios";
 
@@ -27,6 +28,7 @@ export const Searchbar = props => {
   const handleSubmit = event => {
     event.preventDefault();
     history.push("/search/?query=" + event.target.query.value);
+    window.location.reload(false);
   };
   return (
     <div className='form-wrapper'>
