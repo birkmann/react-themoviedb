@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { useQueryParam, StringParam } from "use-query-params";
 import axios from "axios";
+import Img from "react-image";
 import "./index.scss";
 
 export const Search = props => {
@@ -28,10 +29,13 @@ export const Search = props => {
           {dataMovies.results.map(item => (
             <div className='card' key={item.id}>
               <div className='poster'>
-                <img
-                  src={"https://image.tmdb.org/t/p/w300/" + item.poster_path}
+                <Img
+                  src={[
+                    "https://image.tmdb.org/t/p/w300/" + item.poster_path,
+                    "https://i.imgur.com/Z2MYNbj.png/large_movie_poster.png"
+                  ]}
                   alt={item.title}
-                ></img>
+                />
               </div>
               <div className='details'>
                 <div className='title'>
