@@ -22,13 +22,31 @@ export const Search = props => {
   }, [search]);
 
   return (
-    <main className='content discover'>
-      <div className='container'>
-        <h2>Search:</h2>
-        <div className='results'>
+    <main className="content search">
+      <div className="container">
+        <div className="sidebar">
+          <div className="filter">
+            <h3>Search Results</h3>
+            <ul>
+              <li className="selected">
+                <a href="/search/movie?query=titanic">Movies</a>
+                <span>113</span>
+              </li>
+              <li>
+                <a href="/search/tv?query=titanic">TV Shows</a>
+                <span>10</span>
+              </li>
+              <li>
+                <a href="/search/people?query=titanic">People</a>
+                <span>1</span>
+              </li>
+            </ul>
+          </div>
+        </div>
+        <div className="results">
           {dataMovies.results.map(item => (
-            <div className='card' key={item.id}>
-              <div className='poster'>
+            <div className="card" key={item.id}>
+              <div className="poster">
                 <Img
                   src={[
                     "https://image.tmdb.org/t/p/w300/" + item.poster_path,
@@ -37,12 +55,12 @@ export const Search = props => {
                   alt={item.title}
                 />
               </div>
-              <div className='details'>
-                <div className='title'>
+              <div className="details">
+                <div className="title">
                   <h3>{item.title}</h3>
                 </div>
-                <span className='release_date'>{item.release_date}</span>
-                <div className='overview'>
+                <span className="release_date">{item.release_date}</span>
+                <div className="overview">
                   <p>{item.overview}</p>
                 </div>
               </div>
