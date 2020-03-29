@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { Link } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
 import { useQueryParam, StringParam } from "use-query-params";
 import axios from "axios";
 import Img from "react-image";
@@ -8,7 +8,8 @@ import "./index.scss";
 export const Search = props => {
   const [search] = useQueryParam("query", StringParam);
   const [dataMovies, setDataMovies] = useState({ results: [] });
-  const [filter, setFilter] = useState("search");
+  const [filter] = useState("search");
+  const location = useLocation();
 
   useEffect(() => {
     axios({
@@ -20,10 +21,18 @@ export const Search = props => {
         search +
         "&page=1&include_adult=false"
     }).then(response => {
+      console.log(
+        "https://api.themoviedb.org/3/" +
+          filter +
+          "/movie?api_key=6ba659c4bce1a142960639ba1731e656&language=en-US&query=" +
+          search +
+          "&page=1&include_adult=false"
+      );
+      console.log(filter);
       console.log(response.data);
       setDataMovies(response.data);
     });
-  }, [search, filter]);
+  }, [search, filter, location]);
 
   return (
     <main className="content search">
@@ -33,7 +42,7 @@ export const Search = props => {
             <h3>Search Results</h3>
             <ul>
               <li className="selected">
-                <Link to={"/search/movie?query=" + search}>Movies</Link>
+                <Link to={"/search/type=movie?query=" + search}>Movies</Link>
                 <span>113</span>
               </li>
               <li>
