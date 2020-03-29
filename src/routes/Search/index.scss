@@ -61,6 +61,15 @@
 }
 
 .results {
+  .top {
+    display: flex;
+    margin: 0 0 20px;
+    select {
+      margin-left: auto;
+      border: 1px solid #ccc;
+      padding: 5px;
+    }
+  }
   .card {
     display: flex;
     box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
@@ -102,6 +111,36 @@
           overflow: hidden;
           margin: 0;
         }
+      }
+    }
+  }
+}
+
+.pagination {
+  display: flex;
+  justify-content: center;
+  margin: 50px 0;
+  ul {
+    margin: 0;
+    padding: 0;
+    display: flex;
+    li {
+      list-style: none;
+      &.disabled {
+        display: none;
+      }
+      &.selected a {
+        background: #eee;
+      }
+      a {
+        padding: 1px 8px;
+        border-radius: 3px;
+        font-size: 0.9em;
+        margin: 2px;
+        border: 1px solid #ccc;
+        cursor: pointer;
+        outline: 0 none;
+        display: block;
       }
     }
   }

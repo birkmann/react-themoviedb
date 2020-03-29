@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { Link, useLocation } from "react-router-dom";
 import { useQueryParam, StringParam } from "use-query-params";
+import ReactPaginate from "react-paginate";
 import axios from "axios";
 import Img from "react-image";
 import "./index.scss";
@@ -32,13 +33,13 @@ export const Search = props => {
   }, [search, filter, location, cat]);
 
   return (
-    <main className='content search'>
-      <div className='container'>
-        <div className='sidebar'>
-          <div className='filter'>
+    <main className="content search">
+      <div className="container">
+        <div className="sidebar">
+          <div className="filter">
             <h3>Search Results</h3>
             <ul>
-              <li className='selected'>
+              <li className="selected">
                 <Link to={"/search/?cat=movie&query=" + search}>Movies</Link>
                 <span>113</span>
               </li>
@@ -49,10 +50,16 @@ export const Search = props => {
             </ul>
           </div>
         </div>
-        <div className='results'>
+        <div className="results">
+          <div className="top">
+            <select name="sort" id="">
+              <option value="rating-asc">Rating &#8595;</option>
+              <option value="rating-des">Rating &#8593;</option>
+            </select>
+          </div>
           {dataMovies.results.map(item => (
-            <div className='card' key={item.id}>
-              <div className='poster'>
+            <div className="card" key={item.id}>
+              <div className="poster">
                 <Img
                   src={[
                     "https://image.tmdb.org/t/p/w300/" + item.poster_path,
@@ -61,23 +68,26 @@ export const Search = props => {
                   alt={item.title}
                 />
               </div>
-              <div className='details'>
-                <div className='title'>
+              <div className="details">
+                <div className="title">
                   <h3>
                     {item.title}
                     {item.original_name}
                   </h3>
-                  <span className='scrore'>
-                    (<span className='value'>{item.vote_average}</span>)
+                  <span className="scrore">
+                    (<span className="value">{item.vote_average}</span>)
                   </span>
                 </div>
-                <span className='release_date'>{item.release_date}</span>
-                <div className='overview'>
+                <span className="release_date">{item.release_date}</span>
+                <div className="overview">
                   <p>{item.overview}</p>
                 </div>
               </div>
             </div>
           ))}
+          <div className="pagination">
+            <ReactPaginate pageCount="3" />
+          </div>
         </div>
       </div>
     </main>
