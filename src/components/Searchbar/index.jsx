@@ -31,16 +31,16 @@ export const Searchbar = props => {
     window.location.reload(false);
   };
   return (
-    <div className='form-wrapper'>
-      <div className='container'>
+    <div className="form-wrapper">
+      <div className="container">
         <form onSubmit={handleSubmit}>
-          <i className='material-icons icon-search'>search</i>
+          <i className="material-icons icon-search">search</i>
           <input
-            type='text'
-            name='query'
+            type="text"
+            name="query"
             value={searchValue}
             onChange={handleChange}
-            placeholder='Search for a movie, tv show, person...'
+            placeholder="Search for a movie, tv show, person..."
           />
         </form>
       </div>
