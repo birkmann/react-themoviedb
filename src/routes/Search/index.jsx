@@ -7,6 +7,7 @@ import "./index.scss";
 
 export const Search = props => {
   const [search] = useQueryParam("query", StringParam);
+  const [cat] = useQueryParam("cat", StringParam);
   const [dataMovies, setDataMovies] = useState({ results: [] });
   const [filter] = useState("search");
   const location = useLocation();
@@ -17,49 +18,41 @@ export const Search = props => {
       url:
         "https://api.themoviedb.org/3/" +
         filter +
-        "/movie?api_key=6ba659c4bce1a142960639ba1731e656&language=en-US&query=" +
+        "/" +
+        cat +
+        "?api_key=6ba659c4bce1a142960639ba1731e656&language=en-US&query=" +
         search +
         "&page=1&include_adult=false"
     }).then(response => {
-      console.log(
-        "https://api.themoviedb.org/3/" +
-          filter +
-          "/movie?api_key=6ba659c4bce1a142960639ba1731e656&language=en-US&query=" +
-          search +
-          "&page=1&include_adult=false"
-      );
-      console.log(filter);
+      console.log("cat: " + cat);
+      console.log("search: " + search);
       console.log(response.data);
       setDataMovies(response.data);
     });
-  }, [search, filter, location]);
+  }, [search, filter, location, cat]);
 
   return (
-    <main className="content search">
-      <div className="container">
-        <div className="sidebar">
-          <div className="filter">
+    <main className='content search'>
+      <div className='container'>
+        <div className='sidebar'>
+          <div className='filter'>
             <h3>Search Results</h3>
             <ul>
-              <li className="selected">
-                <Link to={"/search/type=movie?query=" + search}>Movies</Link>
+              <li className='selected'>
+                <Link to={"/search/?cat=movie&query=" + search}>Movies</Link>
                 <span>113</span>
               </li>
               <li>
-                <Link to={"/search/tv?query=" + search}>TV Shows</Link>
+                <Link to={"/search/?cat=tv&query=" + search}>TV Shows</Link>
                 <span>10</span>
-              </li>
-              <li>
-                <Link to={"/search/person?query=" + search}>People</Link>
-                <span>1</span>
               </li>
             </ul>
           </div>
         </div>
-        <div className="results">
+        <div className='results'>
           {dataMovies.results.map(item => (
-            <div className="card" key={item.id}>
-              <div className="poster">
+            <div className='card' key={item.id}>
+              <div className='poster'>
                 <Img
                   src={[
                     "https://image.tmdb.org/t/p/w300/" + item.poster_path,
@@ -68,12 +61,18 @@ export const Search = props => {
                   alt={item.title}
                 />
               </div>
-              <div className="details">
-                <div className="title">
-                  <h3>{item.title}</h3>
+              <div className='details'>
+                <div className='title'>
+                  <h3>
+                    {item.title}
+                    {item.original_name}
+                  </h3>
+                  <span className='scrore'>
+                    (<span className='value'>{item.vote_average}</span>)
+                  </span>
                 </div>
-                <span className="release_date">{item.release_date}</span>
-                <div className="overview">
+                <span className='release_date'>{item.release_date}</span>
+                <div className='overview'>
                   <p>{item.overview}</p>
                 </div>
               </div>

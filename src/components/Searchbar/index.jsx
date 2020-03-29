@@ -27,20 +27,20 @@ export const Searchbar = props => {
   const history = useHistory();
   const handleSubmit = event => {
     event.preventDefault();
-    history.push("/search/?query=" + event.target.query.value);
+    history.push("/search/?cat=movie&query=" + event.target.query.value);
     window.location.reload(false);
   };
   return (
-    <div className="form-wrapper">
-      <div className="container">
+    <div className='form-wrapper'>
+      <div className='container'>
         <form onSubmit={handleSubmit}>
-          <i className="material-icons icon-search">search</i>
+          <i className='material-icons icon-search'>search</i>
           <input
-            type="text"
-            name="query"
+            type='text'
+            name='query'
             value={searchValue}
             onChange={handleChange}
-            placeholder="Search for a movie, tv show, person..."
+            placeholder='Search for a movie, tv show, person...'
           />
         </form>
       </div>

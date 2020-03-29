@@ -81,6 +81,11 @@
       .title {
         h3 {
           margin: 0;
+          span {
+            font-weight: normal;
+            margin-left: 5px;
+            font-size: 0.9em;
+          }
         }
       }
       .release_date {
