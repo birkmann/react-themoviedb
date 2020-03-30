@@ -1,15 +1,18 @@
 .content.search {
   .container {
-    display: flex;
     margin-top: 40px;
-    .sidebar {
-      flex: 0 0 260px;
-      margin-right: 40px;
+    @media (min-width: 960px) {
+      display: flex;
+      .sidebar {
+        flex: 0 0 260px;
+        margin-right: 40px;
+      }
     }
   }
 }
 
 .filter {
+  margin-bottom: 20px;
   h3 {
     background: #081c24;
     color: #fff;
